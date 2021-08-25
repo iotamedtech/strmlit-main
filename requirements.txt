@@ -1,0 +1,9 @@
+streamlit
+google-cloud-firestore
+bokeh
+streamlit-bokeh-events
+pygithub
+nltk
+wordcloud
+plotly
+pyrebase
