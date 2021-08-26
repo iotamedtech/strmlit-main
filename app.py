@@ -25,7 +25,7 @@ def main():
 
     if not state.user:
         loginSignup(state)
-        state.sync() #save state user once login/signup
+#         state.sync() #save state user once login/signup
     # state.user="test-user"
     
     else:
@@ -68,7 +68,7 @@ def loginSignup(state):
     title = st.empty()
     email = st.empty()
     password =  st.empty()
-    cola, colb, _ = st.beta_columns(3)
+    cola, colb, _ = st.columns(3)
     with cola:
         placeholder = st.empty() #to interchange login&signup button
     with colb:
@@ -105,7 +105,7 @@ def loginSignup(state):
                 user = auth.create_user_with_email_and_password(text_email, text_password)
                 # user_email = text_email
                 # user_password = text_password
-                user=str(user)
+                state.user=str(user)
             except requests.HTTPError as e:
                 error_json = e.args[1]
                 error = json.loads(error_json)['error']['message']
@@ -115,6 +115,7 @@ def loginSignup(state):
                 st.stop()
         successful=True
         print("Success .... ")
+        st.success("Successfully signed up!")
         email.empty()
         password.empty()
         placeholder.empty()
@@ -141,6 +142,7 @@ def loginSignup(state):
         password.empty()
         placeholder.empty()
         placeholder_hyperlink.empty()
+        st.write("ya")
         return str(login)
 
     #Displaying respective buttons depending on the tab   
